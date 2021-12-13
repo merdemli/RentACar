@@ -1,20 +1,21 @@
 ﻿using Core.Entities.Concrete;
 using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class RentACarContext:DbContext  //DbContext oldugunu tanımlar,base sınıf,EF nuget ile gelir
-    {
-        //Context: DB tabloları ile proje classlarını bağlar,ilişkilendirir
+    public class RentACarContext:DbContext
 
-        //virtual metot
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
+    { 
+       
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) //virtual metot
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=RentACar;Trusted_Connection=true"); //veritabanının yeri 
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=RentACar;Trusted_Connection=true");
+
         }
 
         public DbSet<Car> Cars { get; set; }   //hangi tabloya hangi class karşılık gelir

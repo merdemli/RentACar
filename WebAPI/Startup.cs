@@ -1,11 +1,14 @@
 using Business.Abstract;
 using Business.Concrete;
+using Core.CrossCuttingConcerns.Logging.Serilog.Abstract;
+using Core.CrossCuttingConcerns.Logging.Serilog.Concrete;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,10 +31,16 @@ namespace WebAPI
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+       {
+            // singleton ->  proje kapanana kadar ayný instance kullanýr.
+            // transient -> her inject için 1 instance oluþturur
+            // scoped -> istek baþýna instance oluþur,cevap dönene kadar.
+
+            //services.AddDbContext<RentACarContext>(c => c.UseSqlServer(Configuration.GetConnectionString("RentACarDB")));
+            services.AddSingleton<FileLogger>();
             services.AddControllers();
-            //services.AddSingleton<ICarService, CarManager>(); //tüm bellekte bir tane
-            //services.AddSingleton<ICarDal, EFCarDal>();
+            
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

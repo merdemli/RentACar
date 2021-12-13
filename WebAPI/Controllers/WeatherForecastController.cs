@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using Core.CrossCuttingConcerns.Logging.Serilog.Abstract;
+using Core.CrossCuttingConcerns.Logging.Serilog.Concrete;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,17 +17,21 @@ namespace WebAPI.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly LoggerServiceBase _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        //alternatif kullanım eklenecek
+        public WeatherForecastController(FileLogger logger) //LoggerServicebase logger;
         {
             _logger = logger;
+
         }
 
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
+            _logger.Info("testLog");
+
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateTime.Now.AddDays(index),

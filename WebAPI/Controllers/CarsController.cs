@@ -34,7 +34,6 @@ namespace WebAPI.Controllers
 
 
         [HttpGet]
-        [Route("getall")]
         public IActionResult GetAll() //get request'lerde 200 ile calısılır
         {
             var result = _carService.GetAll();
@@ -47,7 +46,6 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
-        [Route("add")]
         public IActionResult Add([FromBody]Car car)
         {
             var result = _carService.Add(car);
@@ -58,7 +56,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("update")]
+        [HttpPut]
         public IActionResult Update([FromBody] Car car)
         {
             var result = _carService.Update(car);
@@ -69,7 +67,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("delete")]
+        [HttpDelete]
         public IActionResult Delete([FromBody] Car car)
         {
             var result = _carService.Delete(car);
@@ -81,7 +79,10 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getcarsbybrandid")]
-        public IActionResult GetCarsByBrandID(int brandId)
+        [Route("{brandId}")]
+        // localhost/api/cars/20/
+        // localhost/api/cars/page?=10&size=5
+        public IActionResult GetCarsByBrandID(int brandId)//fromroute]
         {
             var result = _carService.GetCarsByBrandId(brandId);
             if (result.Success)
@@ -100,6 +101,7 @@ namespace WebAPI.Controllers
             {
                 return Ok(result);
             }
+
             return BadRequest(result);
         }
 

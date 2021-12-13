@@ -10,8 +10,6 @@ namespace Core.DataAccess.EntityFramework
 {                                           
     //çalışılan tablo ve context verilir
     public class EFEntityRepositoryBase <TEntity, TContext> : IEntityRepository<TEntity>
-
-
         where TEntity: class, IEntity,new()                    //referans tip, veritabanı tablosu ve new'lenebiliyor olma şartı
         where TContext: DbContext,new()                        //DbContext'ten inherit edilmş olmalı ve new'lenebiliyor olmalı
     {
@@ -23,7 +21,6 @@ namespace Core.DataAccess.EntityFramework
                 var addedEntity = context.Entry(entity); //gönderilen nesne veri kaynağı ile ilişkilendirilir yani referansı yakalanır
                 addedEntity.State = EntityState.Added;    //yeni eklenecek nesne olarak set edilir  ; State nesnenin Added oldugunu gösterir
                 context.SaveChanges();
-
             }
         }
 
@@ -57,6 +54,7 @@ namespace Core.DataAccess.EntityFramework
 
         public void Update(TEntity entity)
         {
+
             using (TContext context = new TContext())
             {
                 var updatedEntity = context.Entry(entity);
