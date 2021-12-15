@@ -7,14 +7,23 @@ using System.Text;
 
 namespace Entities.Concrete
 {
+    // localost/indivual-register
+    public class Company : User
+    {
+
+        public int CustomerId { get; set; }
+        
+
+    }
+
     public class Customer: User
     {
         //[Key]
         public int CustomerId { get; set; }
-        public string CompanyName { get; set; }
         public int FindeksScore { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string IdentityNumber { get; set; }
     }
 
 }
