@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Core.CrossCuttingConcerns.Logging.Serilog.Abstract
+namespace Core.CrossCuttingConcerns.Logging.Serilogger.Abstract
 {
     public abstract class LoggerServiceBase
     { //serilog'un her ı

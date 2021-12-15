@@ -1,11 +1,12 @@
 ﻿using Core.Entities;
+using Core.Entities.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Entities.Concrete
 {
-    public class Payment:IEntity
+    public class Payment: BaseEntity
     {
         public int PaymentId { get; set; }
         public int RentalId { get; set; }

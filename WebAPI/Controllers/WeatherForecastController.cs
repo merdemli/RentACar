@@ -1,5 +1,6 @@
-﻿using Core.CrossCuttingConcerns.Logging.Serilog.Abstract;
-using Core.CrossCuttingConcerns.Logging.Serilog.Concrete;
+﻿using Core.CrossCuttingConcerns.Logging.Serilogger;
+using Core.CrossCuttingConcerns.Logging.Serilogger.Abstract;
+using Core.CrossCuttingConcerns.Logging.Serilogger.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -20,10 +21,10 @@ namespace WebAPI.Controllers
         private readonly LoggerServiceBase _logger;
 
         //alternatif kullanım eklenecek
-        public WeatherForecastController(FileLogger logger) //LoggerServicebase logger;
+        public WeatherForecastController(FileLogger logger, Graylogger logger2) //LoggerServicebase logger;
         {
             _logger = logger;
-
+            logger2.Debug("sdfsdf");
         }
 
         [HttpGet]

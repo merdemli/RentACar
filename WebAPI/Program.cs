@@ -18,7 +18,7 @@ namespace WebAPI
         {
             CreateHostBuilder(args).Build().Run();
         }
-
+        
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory()) //.NET Core yerine baþka bir IOC Container kullanmak autofac'i kullan
@@ -26,7 +26,7 @@ namespace WebAPI
                 {
                     builder.RegisterModule(new AutofacBusinessModule());
                 })
-                
+
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

@@ -1,11 +1,12 @@
 ﻿using Core.Entities;
+using Core.Entities.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Entities.Concrete
 {
-    public class CreditCard :IEntity
+    public class CreditCard : BaseEntity
     {
         public int CreditCardId { get; set; }
         public int CustomerId { get; set; }

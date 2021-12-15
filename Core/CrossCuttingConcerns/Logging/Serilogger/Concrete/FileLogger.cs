@@ -1,9 +1,10 @@
-﻿using Core.CrossCuttingConcerns.Logging.Serilog.Abstract;
+﻿using Core.CrossCuttingConcerns.Logging.Serilogger.Abstract;
 using Serilog;
 using System.IO;
 
-namespace Core.CrossCuttingConcerns.Logging.Serilog.Concrete
+namespace Core.CrossCuttingConcerns.Logging.Serilogger.Concrete
 {
+
     public class FileLogger : LoggerServiceBase
     {
         public FileLogger()

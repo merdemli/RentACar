@@ -1,5 +1,6 @@
 ﻿
 using Core.Entities;
+using Core.Entities.Abstarct;
 using System;
 using System.Collections.Generic;
 using System.Text;

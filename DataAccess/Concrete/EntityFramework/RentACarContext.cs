@@ -1,23 +1,24 @@
 ﻿using Core.Entities.Concrete;
 using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class RentACarContext:DbContext
-
-    { 
-       
+    public class RentACarContext: DbContext
+        
+    {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) //virtual metot
         {
+
             optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=RentACar;Trusted_Connection=true");
 
         }
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            
+            base.OnModelCreating(modelBuilder);
+        }
         public DbSet<Car> Cars { get; set; }   //hangi tabloya hangi class karşılık gelir
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Color> Colors { get; set; }

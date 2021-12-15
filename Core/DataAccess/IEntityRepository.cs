@@ -1,5 +1,6 @@
 ﻿
 using Core.Entities;
+using Core.Entities.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -11,7 +12,7 @@ namespace Core.DataAccess
                                          //class : referans tip olabilir, int vs yazılamaz,newlenebilir olmalı
                                          //IEntity: sadece IEntity(ortak özellik) tipinde yazılabilir,ya da onu implemente eden bir nesne olabilir
                                          //new: IEntity olmaması için new'leniyor olması,soyut olmamalı
-    public interface IEntityRepository<T> where T: class,IEntity,new()  //generic yapı // T'yi sınırlandırdık
+    public interface IEntityRepository<T> where T: class,IEntity,new()  
     {
         List<T> GetAll(Expression<Func<T,bool>>filter=null);  //Expression manager da ...'ya göre listele gibi filre vermeyi sağlar
                                                //filtre vermeyebilirsin //default'u null

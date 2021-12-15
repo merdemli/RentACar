@@ -32,6 +32,8 @@ namespace DataAccess.Concrete.EntityFramework
 
                 return result.ToList();  //IQueryable
             }
+            //table
+            //view - 
         }
     }
 }
